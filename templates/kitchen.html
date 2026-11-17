@@ -1,0 +1,58 @@
+
+{% extends "base.html" %}
+
+{% block title %}Kitchen Board | Café Calle Ocho{% endblock %}
+
+{% block content %}
+
+<h2>Kitchen Order Board</h2>
+
+<p>
+    Staff can view customer orders and check their
+    current preparation status.
+</p>
+
+<div class="grid">
+
+    {% for order in orders %}
+
+    <article>
+
+        <h3>Order #{{ order.order_id }}</h3>
+
+        <p>
+            <strong>Customer:</strong>
+            {{ order.customer }}
+        </p>
+
+        <p>
+            <strong>Items:</strong>
+            {{ order.items }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+
+            {% if order.status == "Received" %}
+                <mark>Received</mark>
+            {% elif order.status == "Preparing" %}
+                <mark>Preparing</mark>
+            {% elif order.status == "Ready" %}
+                <mark>Ready for Pickup</mark>
+            {% else %}
+                <mark>{{ order.status }}</mark>
+            {% endif %}
+
+        </p>
+
+    </article>
+
+    {% else %}
+
+    <p>No orders are currently available.</p>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

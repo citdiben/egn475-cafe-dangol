@@ -1,0 +1,88 @@
+
+{% extends "base.html" %}
+
+{% block title %}Place an Order | Café Calle Ocho{% endblock %}
+
+{% block content %}
+
+<h2>Place Your Order</h2>
+
+<p>
+    Select your favorite Cuban food and drinks.
+    This is a sample ordering form for our prototype.
+</p>
+
+<article>
+
+    <form>
+
+        <label for="customer_name">
+            Customer Name
+        </label>
+
+        <input
+            type="text"
+            id="customer_name"
+            name="customer_name"
+            placeholder="Enter your name"
+            required
+        >
+
+        <label for="customer_email">
+            Email Address
+        </label>
+
+        <input
+            type="email"
+            id="customer_email"
+            name="customer_email"
+            placeholder="Enter your email"
+            required
+        >
+
+        <label for="item_id">
+            Select Food or Drink
+        </label>
+
+        <select id="item_id" name="item_id" required>
+
+            <option value="">Choose a menu item</option>
+
+            {% for item in items %}
+
+            <option value="{{ item.id }}">
+                {{ item.name }} -
+                ${{ "%.2f"|format(item.price_cents / 100) }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <label for="quantity">
+            Quantity
+        </label>
+
+        <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            max="10"
+            value="1"
+            required
+        >
+
+        <button type="button" disabled>
+            Submit Order (Coming in Week 4)
+        </button>
+
+    </form>
+
+</article>
+
+<a href="{{ url_for('menu') }}" role="button">
+    Back to Menu
+</a>
+
+{% endblock %}
