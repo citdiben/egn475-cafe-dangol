@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+
+{% block title %}Home | Café Calle Ocho{% endblock %}
+
+{% block content %}
+
+<section class="welcome">
+    <h2>Welcome to Café Calle Ocho!</h2>
+
+    <p>
+        Experience the delicious taste of authentic Cuban food
+        and fresh coffee in the heart of Miami.
+    </p>
+
+    <a href="{{ url_for('menu') }}" role="button">
+        Explore Our Menu
+    </a>
+</section>
+
+<section>
+    <h2>About Our Café</h2>
+
+    <p>
+        Café Calle Ocho is a welcoming Cuban café serving
+        fresh sandwiches, pastries, coffee, and refreshing drinks.
+        Our goal is to provide delicious food and friendly service.
+    </p>
+</section>
+
+<section>
+    <h2>How Ordering Works</h2>
+
+    <ol>
+        <li>Explore our food and drink menu.</li>
+        <li>Select your favorite items.</li>
+        <li>Place your order.</li>
+        <li>Follow your order on the kitchen board.</li>
+        <li>Pick up your order when it is ready.</li>
+    </ol>
+</section>
+
+{% endblock %}
