@@ -63,22 +63,36 @@
         </div>
     </header>
 
-    <nav class="container">
-        <ul>
-            <li><a href="{{ url_for('index') }}">Home</a></li>
-            <li><a href="{{ url_for('menu') }}">Menu</a></li>
-            <li><a href="{{ url_for('order_new') }}">Place Order</a></li>
-            <li><a href="{{ url_for('kitchen') }}">Kitchen Board</a></li>
-            <li><a href="{{ url_for('orders') }}">Order History</a></li>
-        </ul>
-    </nav>
+    
+<nav class="container">
+    <ul class="main-navigation">
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('menu') }}">Browse Menu</a></li>
+        <li><a href="{{ url_for('menu_new') }}">Add Menu Item</a></li>
+        <li><a href="{{ url_for('order_new') }}">Place an Order</a></li>
+        <li><a href="{{ url_for('kitchen') }}">Kitchen Board</a></li>
+        <li><a href="{{ url_for('orders') }}">Order History</a></li>
+    </ul>
+</nav>
 
-    <main class="container">
+    
+<main class="container">
 
-        {% block content %}
-        {% endblock %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <article>
+                    <strong>{{ message }}</strong>
+                </article>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
-    </main>
+    {% block content %}
+    {% endblock %}
+
+</main>
+
 
     <footer>
         <p>&copy; 2026 Café Calle Ocho | Miami, Florida</p>
